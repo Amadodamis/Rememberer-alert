@@ -1,0 +1,23 @@
+.app {
+    background-color: var(--fondo);
+    height: 100vh;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Title-app {
+    color: white;
+    font-size: 3rem;
+    font-family: var(--font1);
+    letter-spacing: 1px;
+}
+
+section {
+    width: 60%;
+    border-radius: 5px;
+    background-color: var(--tcolor);
+}

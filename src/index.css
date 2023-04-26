@@ -1,4 +1,17 @@
 :root {
- font-size: 16px;
+  --fondo:#2b2d42;
+  --pcolor: #355070;
+  --tcolor: #6d597a;
+  --scolor: #b56576;
+
+  --font1:'Titillium Web', sans-serif;
+  --font2:'Hind Madurai', sans-serif;
+  --font3:'Prompt', sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+}
