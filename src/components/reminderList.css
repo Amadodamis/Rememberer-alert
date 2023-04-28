@@ -1,8 +1,10 @@
 .box-ReminderList {
-    height: 50%;
+    height: 60%;
     padding: 15px;
-    overflow: hidden;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .title-list-reminders {
@@ -11,6 +13,15 @@
     letter-spacing: 1px;
     color: var(--scolor);
     font-size: 1.6rem;
+}
+
+
+.container-items{
+    width: 100%;
+    height: 74%;
+    overflow: hidden;
+    overflow-y: scroll;
+
 }
 
 .item {
@@ -23,10 +34,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-   
+
 }
 
-.item:hover{
+.item:hover {
     background-color: rgb(181 101 118/50%);
 }
 
@@ -47,3 +58,13 @@
     height: 2rem;
 }
 
+.no-reminder {
+    text-align: center;
+    margin: 20px;
+}
+
+.delete-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+   
+}
