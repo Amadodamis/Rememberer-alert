@@ -18,6 +18,8 @@ export default function NewReminder({ reminders, setReminders }) {
         //extraigo los datos y lo convierto en un objeto
         let newReminder = formatDateToObject(newDate, message)
 
+       
+
         //Si el local storage ya contiene informacion.
         if (localStorage.getItem("reminders")) {
             addReminder(newReminder, reminders, setReminders)

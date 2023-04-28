@@ -19,6 +19,7 @@ function addReminder(reminder, reminders, setReminders) {
 
     localStorage.setItem("reminders", JSON.stringify(arrayReminders))
 
+
 }
 function deleteReminder(reminderIdToDelete, reminders, setReminders) {
 
