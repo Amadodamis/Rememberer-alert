@@ -1,6 +1,6 @@
 import "./newReminder.css"
-import { formatDate, maxDate } from "../JS/formatDate"
-
+import { formatDate, maxDate, formatDateToObject } from "../JS/formatDate"
+import { firstReminder, addReminder } from "../JS/formatLocalStorage"
 
 export default function NewReminder() {
 
@@ -10,8 +10,23 @@ export default function NewReminder() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.recordatorio.value)
-        console.log(e.target.newDate.value)
+        let message = e.target.recordatorio.value;
+
+        //transformo el value en una fecha
+        let newDate = new Date(e.target.newDate.value)
+
+        //extraigo los datos y lo convierto en un objeto
+        let newReminder = formatDateToObject(newDate, message)
+
+        //Si el local storage ya contiene informacion.
+        if (localStorage.getItem("reminders")) {
+            addReminder(newReminder)
+        }
+
+        //inicializador de localStorage
+        else {
+            firstReminder(newReminder)
+        }
 
 
         //Cuando se envia el formulario, date cambia y se actualiza en el calendario y se limpia el reminder
@@ -21,10 +36,13 @@ export default function NewReminder() {
 
     }
 
+
+
+
     return (
         <section className="box-newReminder">
             <form onSubmit={handleSubmit} className="form" >
-                
+
                 <input
                     className="input-text"
                     name="recordatorio"
