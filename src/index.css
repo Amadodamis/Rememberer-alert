@@ -1,13 +1,11 @@
 :root {
-  --fondo:#2b2d42;
-  --fondo2: #6d597a;
-
-  --pcolor: #355070;
+  --fondo: #333333;
+  --fondo2: #393939;
   --scolor: #b56576;
 
-  --font1:'Titillium Web', sans-serif;
-  --font2:'Hind Madurai', sans-serif;
-  --font3:'Prompt', sans-serif;
+  --font1: 'Titillium Web', sans-serif;
+  --font2: 'Hind Madurai', sans-serif;
+  --font3: 'Prompt', sans-serif;
 }
 
 * {
@@ -15,4 +13,23 @@
   font-size: 16px;
   margin: 0px;
   padding: 0px;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--fondo2);
+  box-shadow: 0 0 10px var(--fondo) inset;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(181 101 118/50%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scolor);
 }

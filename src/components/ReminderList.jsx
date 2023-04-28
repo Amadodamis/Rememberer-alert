@@ -1,19 +1,18 @@
 import "./reminderList.css"
 import editIcon from "../img/edit.png"
-import deleteIcon from "../img/delete.png"
 
 export default function ReminderList() {
 
-    let message = "Comprar plasticola para el proyecto de ciencias."
-    let year = "2017"
-    let month = "12"
-    let day = "2"
-    let hour = "11"
-    let minute = "21"
+    let reminderModel = {
+        message: "Comprar plasticola para el proyecto de ciencias.",
+        year: "2017",
+        month: "12",
+        day: "2",
+        hour: "11",
+        minute: "21",
+    }
 
-
-    let item = <div className="item"><p className="text-list">{message}</p><p className="text-list">{year}-{month}-{day} {hour}:{minute}hs</p><div className="container-icons"><img src={editIcon} alt='IconEdit.png' className='icon-delete-edit' /> <img src={deleteIcon} alt='IconDelete.png' className='icon-delete-edit' /></div></div>
-
+    let array = [reminderModel, reminderModel, reminderModel, reminderModel, reminderModel, reminderModel, reminderModel, reminderModel,]
 
     return (
         <section className="box-ReminderList">
@@ -21,19 +20,19 @@ export default function ReminderList() {
                 List of reminders
             </h2>
 
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
+            {array.length ?
+                array.map((reminder, i) =>
+
+                    <div className="item" key={i}>
+                        <p className="text-list message">{reminder.message}</p>
+                        <p className="text-list">{reminder.year}-{reminder.month}-{reminder.day} {reminder.hour}:{reminder.minute}hs</p>
+                        <img src={editIcon} alt='IconEdit.png' className='icon-edit' />
+                    </div>
+
+                )
+                :
+                <p className="text-list" >No hay recordatorios</p>
+            }
 
         </section>
     )

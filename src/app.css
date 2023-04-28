@@ -2,15 +2,15 @@
     background-color: var(--fondo);
     height: 100vh;
     padding: 20px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+
+
 }
 
 .Title-app {
-    color: white;
+    color: var(--scolor);
     font-size: 3rem;
     font-family: var(--font1);
     letter-spacing: 1px;

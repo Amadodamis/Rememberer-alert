@@ -9,37 +9,41 @@
     text-align: center;
     font-family: var(--font2);
     letter-spacing: 1px;
-    color: white;
+    color: var(--scolor);
     font-size: 1.6rem;
 }
 
 .item {
-    height: 2.5rem;
+    min-height: 5rem;
     margin: 5px;
-    padding: 5px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    padding: 10px 0px 10px 0px;
     border: 1px var(--scolor) solid;
     border-radius: 5px;
 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
 }
+
+.item:hover{
+    background-color: rgb(181 101 118/50%);
+}
+
+
 
 .text-list {
     font-family: var(--font3);
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
-.icon-delete-edit{
-    width: 1.2rem;
-    height: 1.2rem;
+.message {
+    max-width: 60%;
 }
 
-.container-icons{
-    width: 3rem;
-    display: flex;
-    justify-content: space-between;
+.icon-edit {
+    width: 2rem;
+    height: 2rem;
 }
+

@@ -2,20 +2,18 @@ function formatDate(date) {
 
     let hour;
     let month;
+    let minutes;
 
-    if (date.getHours() < 10) {
-        hour = `0${date.getHours()}`
-    } else {
-        hour = `${date.getHours()}`
-    }
+    //cuando los meses/horas/minutos comienzan son menores que 10, se le agrega un 0 adelante. 
 
-    if (date.getMonth() < 9) {
-        month = `0${date.getMonth() + 1}`
-    } else {
-        month = `${date.getMonth() + 1}`
-    }
+    date.getHours() < 10 ? hour = `0${date.getHours()}` : hour = `${date.getHours()}`
 
-    let actualDateFormatted = `${date.getFullYear()}-${month}-${date.getDate()}T${hour}:${date.getMinutes()}`
+    date.getMonth() < 9 ? month = `0${date.getMonth() + 1}` : month = `${date.getMonth() + 1}`
+
+    date.getMinutes() < 10 ? minutes = `0${date.getMinutes()}` : minutes = `${date.getMinutes()}`
+
+
+    let actualDateFormatted = `${date.getFullYear()}-${month}-${date.getDate()}T${hour}:${minutes}`
 
     return actualDateFormatted
 
