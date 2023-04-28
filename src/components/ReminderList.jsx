@@ -1,14 +1,12 @@
 import "./reminderList.css"
 
-import { useState } from "react"
-
+import { deleteReminder } from "../JS/formatLocalStorage"
 import editIcon from "../img/edit.png"
 import deleteIcon from "../img/delete.png"
-import data from "../JS/data"
 
-export default function ReminderList() {
 
-    const [reminders, setReminders] = useState(data)
+export default function ReminderList({reminders, setReminders}) {
+
 
     const startDrag = (evt, reminder) => {
         evt.dataTransfer.setData('reminderID', reminder.id)
@@ -23,9 +21,10 @@ export default function ReminderList() {
     const onDrop = (evt) => {
         const reminderIdToDelete = parseInt(evt.dataTransfer.getData('reminderID'));
 
-        const newListReminders = reminders.filter((reminder) => reminderIdToDelete !== reminder.id);
+        //lo quito del local storage
+        deleteReminder(reminderIdToDelete,reminders, setReminders)
 
-        setReminders(newListReminders)
+        
 
     }
 
@@ -37,7 +36,7 @@ export default function ReminderList() {
             </h2>
             <div className='container-items'>
 
-                {reminders.length ?
+                {reminders!==null || reminders === [] ?
                     reminders.map((reminder, i) =>
 
                         <div className="item" key={i} draggable onDragStart={(evt) => startDrag(evt, reminder)}>
@@ -48,7 +47,7 @@ export default function ReminderList() {
 
                     )
                     :
-                    <p className="text-list no-reminder" >No hay recordatorios.,</p>
+                    <p className="text-list no-reminder" >No hay recordatorios.</p>
                 }
             </div>
 

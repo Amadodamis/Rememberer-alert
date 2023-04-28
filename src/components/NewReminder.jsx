@@ -2,7 +2,7 @@ import "./newReminder.css"
 import { formatDate, maxDate, formatDateToObject } from "../JS/formatDate"
 import { firstReminder, addReminder } from "../JS/formatLocalStorage"
 
-export default function NewReminder() {
+export default function NewReminder({ reminders, setReminders }) {
 
     let date = new Date()
     //console.log(formatDate(date))
@@ -20,12 +20,12 @@ export default function NewReminder() {
 
         //Si el local storage ya contiene informacion.
         if (localStorage.getItem("reminders")) {
-            addReminder(newReminder)
+            addReminder(newReminder, reminders, setReminders)
         }
 
         //inicializador de localStorage
         else {
-            firstReminder(newReminder)
+            firstReminder(newReminder, reminders, setReminders)
         }
 
 
