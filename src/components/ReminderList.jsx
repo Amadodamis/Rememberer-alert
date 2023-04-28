@@ -1,19 +1,34 @@
 import "./reminderList.css"
+
+import { useState } from "react"
+
 import editIcon from "../img/edit.png"
 import deleteIcon from "../img/delete.png"
+import data from "../JS/data"
+
 export default function ReminderList() {
 
-    let reminderModel = {
-        message: "Comprar plasticola para el proyecto de ciencias.",
-        year: "2023",
-        month: "05",
-        day: "1",
-        hour: "09",
-        minute: "15",
+    const [reminders, setReminders] = useState(data)
+
+    const startDrag = (evt, reminder) => {
+        evt.dataTransfer.setData('reminderID', reminder.id)
+
     }
 
-    let array = [reminderModel, reminderModel, reminderModel, reminderModel, reminderModel, reminderModel, reminderModel,]
-    //let array =[]
+    const draggingOver = (evt) => {
+        evt.preventDefault();
+    }
+
+
+    const onDrop = (evt) => {
+        const reminderIdToDelete = parseInt(evt.dataTransfer.getData('reminderID'));
+
+        const newListReminders = reminders.filter((reminder) => reminderIdToDelete !== reminder.id);
+
+        setReminders(newListReminders)
+
+    }
+
 
     return (
         <section className="box-ReminderList">
@@ -22,10 +37,10 @@ export default function ReminderList() {
             </h2>
             <div className='container-items'>
 
-                {array.length ?
-                    array.map((reminder, i) =>
+                {reminders.length ?
+                    reminders.map((reminder, i) =>
 
-                        <div className="item" key={i}>
+                        <div className="item" key={i} draggable onDragStart={(evt) => startDrag(evt, reminder)}>
                             <p className="text-list message">{reminder.message}</p>
                             <p className="text-list">{reminder.day}-{reminder.month}-{reminder.year} {reminder.hour}:{reminder.minute}hs</p>
                             <img src={editIcon} alt='IconEdit.png' className='icon-edit' />
@@ -37,7 +52,7 @@ export default function ReminderList() {
                 }
             </div>
 
-            <img src={deleteIcon} alt='delete-icon' className='delete-icon' />
+            <img src={deleteIcon} alt='delete-icon' className='delete-icon' droppable="true" onDragOver={(evt => draggingOver(evt))} onDrop={(evt => onDrop(evt))} />
 
         </section>
     )
